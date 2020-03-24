@@ -11,7 +11,7 @@ tdqm
 
 spacy
 
-## download and preprocess the data
+## Download and preprocess the data
 
 ```
 cd data 
@@ -22,12 +22,12 @@ python preprocess_text.py --dataroot vqacp2/ --version v2
 cd ..
 ```
 
-## training
+## Training
 ```
 CUDA_VISIBLE_DEVICES=0 python main.py --dataroot data/vqacp2/ --img_root data/coco/ --output saved_models_cp2/ --self_loss_weight 3
 ```
 
-## evaluation
+## Evaluation
 * Generte a json file of results from the test set can be produced with:
 ```
 CUDA_VISIBLE_DEVICES=0 python test.py --dataroot data/vqacp2/ --img_root data/coco/ --checkpoint_path saved_models_cp2/best_model.pth --output saved_models_cp2/result/
