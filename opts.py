@@ -30,7 +30,7 @@ def parse_opt():
 
     parser.add_argument('--s_epoch', type=int, default=0,
                     help='training from s epochs')
-    parser.add_argument('--pretrain_epoches', type=int, default=40,
+    parser.add_argument('--pretrain_epoches', type=int, default=12,
                     help='number of epochs for normal training')
 
     parser.add_argument('--batch_size', type=int, default=256,
@@ -70,7 +70,7 @@ def parse_opt():
     parser.add_argument('--ntokens', type=int, default=777,
                     help='ntokens')
     
-    parser.add_argument('--dataroot', type=str, default='data/vqacp2/annotations/',help='dataroot')
+    parser.add_argument('--dataroot', type=str, default='data/vqacp2/',help='dataroot')
     parser.add_argument('--img_root', type=str, default='data/coco/',help='image_root')
                     
     parser.add_argument('--checkpoint_path', type=str, default=None,
