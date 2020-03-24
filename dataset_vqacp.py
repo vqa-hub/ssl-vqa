@@ -112,7 +112,7 @@ def _load_dataset(dataroot, name, label2ans):
 
     img_id2val: dict {img_id -> val} val can be used to retrieve image or features
     dataroot: root path of dataset
-    name: 'train', 'val', 'test-dev2015', test2015'
+    name: 'train', 'test'
     """
     question_path = os.path.join(dataroot, 'vqacp_v2_%s_questions.json' % (name))
     questions = sorted(json.load(open(question_path)),
@@ -226,7 +226,7 @@ if __name__ == '__main__':
 
     from torch.utils.data import DataLoader
 
-    dataroot = 'data/vqacp2/annotations/'
+    dataroot = 'data/vqacp2/'
     img_root = 'data/coco/'
     dictionary = Dictionary.load_from_file(dataroot + 'dictionary.pkl')
     train_dset = VQAFeatureDataset('train', dictionary, dataroot, img_root, adaptive=False)
