@@ -8,7 +8,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', type=str, default='saved_models/test_epochs_17.json')
     parser.add_argument('--name', type=str, default='test')
-    parser.add_argument('--data_dir', type=str, default='data/vqacp2/annotations/')
+    parser.add_argument('--dataroot', type=str, default='data/vqacp2/annotations/')
 
     args = parser.parse_args()
     return args
@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
 	args = parse_args()
 
-	anno_path = osp.join(args.data_dir, '%s_target_count.pth'%(args.name))
+	anno_path = osp.join(args.dataroot, '%s_target_count.pth'%(args.name))
 	annotations = torch.load(anno_path)
 
 	annotations = sorted(annotations, key=lambda x: x['question_id'])
