@@ -27,7 +27,7 @@ cd ..
 CUDA_VISIBLE_DEVICES=0 python main.py --dataroot data/vqacp2/ --img_root data/coco/ --output saved_models_cp2/ --self_loss_weight 3
 ```
 
-## test the model on the test set
+## evaluation
 * Generte a json file of results from the test set can be produced with:
 ```
 CUDA_VISIBLE_DEVICES=0 python test.py --dataroot data/vqacp2/ --img_root data/coco/ --checkpoint_path saved_models_cp2/best_model.pth --output saved_models_cp2/result/
