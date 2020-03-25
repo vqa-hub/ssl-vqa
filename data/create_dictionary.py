@@ -10,8 +10,8 @@ import json
 import _pickle as cPickle
 import numpy as np
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from dataset import Dictionary
-from utils import get_sent_data
+# from dataset import Dictionary
+# from utils import get_sent_data
 
 
 def parse_args():
@@ -21,6 +21,57 @@ def parse_args():
     args = parser.parse_args()
     return args
 
+
+class Dictionary(object):
+    def __init__(self, word2idx=None, idx2word=None):
+        if word2idx is None:
+            word2idx = {}
+        if idx2word is None:
+            idx2word = []
+        self.word2idx = word2idx
+        self.idx2word = idx2word
+
+    @property
+    def ntoken(self):
+        return len(self.word2idx)
+
+    @property
+    def padding_idx(self):
+        return len(self.word2idx)
+
+    def tokenize(self, sentence, add_word):
+        sentence = sentence.lower()
+        sentence = sentence.replace(',', '').replace('?', '').replace('\'s', ' \'s')
+        words = sentence.split()
+        tokens = []
+        if add_word:
+            for w in words:
+                tokens.append(self.add_word(w))
+        else:
+            for w in words:
+                # the least frequent word (`bebe`) as UNK for Visual Genome dataset
+                tokens.append(self.word2idx.get(w, self.padding_idx - 1))
+        return tokens
+
+    def dump_to_file(self, path):
+        cPickle.dump([self.word2idx, self.idx2word], open(path, 'wb'))
+        print('dictionary dumped to %s' % path)
+
+    @classmethod
+    def load_from_file(cls, path):
+        print('loading dictionary from %s' % path)
+        word2idx, idx2word = cPickle.load(open(path, 'rb'))
+        d = cls(word2idx, idx2word)
+        return d
+
+    def add_word(self, word):
+        if word not in self.word2idx:
+            self.idx2word.append(word)
+            self.word2idx[word] = len(self.idx2word) - 1
+        return self.word2idx[word]
+
+    def __len__(self):
+        return len(self.idx2word)
 
 def create_dictionary(dataroot, task='vqacp2'):
     dictionary = Dictionary()
@@ -75,7 +126,7 @@ if __name__ == '__main__':
 
     d = create_dictionary(args.dataroot, args.task)
     d.dump_to_file(dictionary_path)
-
+    
     d = Dictionary.load_from_file(dictionary_path)
     emb_dim = 300
     glove_file = 'glove/glove.6B.%dd.txt' % emb_dim
