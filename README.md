@@ -11,6 +11,8 @@
 
 * spacy
 
+* h5py
+
 ## Download and preprocess the data
 
 ```
