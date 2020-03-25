@@ -82,19 +82,9 @@ punct = [';', r"/", '[', ']', '"', '{', '}',
                 '(', ')', '=', '+', '\\', '_', '-',
                 '>', '<', '@', '`', ',', '?', '!']
 
-
-# Notice that VQA score is the average of 10 choose 9 candidate answers cases
 # See http://visualqa.org/evaluation.html
 def get_score(occurences):
     return min(occurences/3, 1)
-    # if occurences == 0:
-    #     return .0
-    # elif occurences == 1:
-    #     return .33
-    # elif occurences == 2:
-    #     return .67
-    # else:
-    #     return 1.
 
 
 def process_punctuation(inText):
