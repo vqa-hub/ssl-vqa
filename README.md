@@ -31,11 +31,11 @@ CUDA_VISIBLE_DEVICES=0 python main.py --dataroot data/vqacp2/ --img_root data/co
 ```
 
 ## Evaluation
-* Generte a json file of results from the test set can be produced with:
+* A json file of results from the test set can be produced with:
 ```
 CUDA_VISIBLE_DEVICES=0 python test.py --dataroot data/vqacp2/ --img_root data/coco/ --checkpoint_path saved_models_cp2/best_model.pth --output saved_models_cp2/result/
 ```
-* Compute detailed accuracy each question type:
+* Compute detailed accuracy for each answer type:
 ```
 python comput_score.py --input saved_models_cp2/result/XX.json --dataroot data/vqacp2/
 ```
