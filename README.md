@@ -1,4 +1,5 @@
 # ssl-vqa
+This repo contains code modified from [here](https://github.com/jialinwu17/self_critical_vqa) here, many thanks!
 
 ## Requirements
 * python 3.6.8
