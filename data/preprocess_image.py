@@ -2,7 +2,6 @@
 Learning Conditioned Graph Structures for Interpretable Visual Question Answering
 Will Norcliffe-Brown and Efstathios Vafeias and Sarah Parisot
 https://arxiv.org/abs/1806.07243
-
 This code is written by Will Norcliffe-Brown.
 """
 from __future__ import division
