@@ -281,7 +281,7 @@ if __name__ == '__main__':
     val_question_file = args.dataroot + 'vqacp_%s_test_questions.json' % (args.version)
     val_questions = json.load(open(val_question_file))
 
-    answers = train_answers + val_answers
+    answers = train_answers
     occurence = filter_answers(answers, 9)
 
     cache_path = args.dataroot + 'cache/train_test_ans2label.pkl'
