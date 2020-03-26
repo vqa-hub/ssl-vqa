@@ -289,7 +289,7 @@ if __name__ == '__main__':
         print('found %s' % cache_path)
         ans2label = cPickle.load(open(cache_path, 'rb'))
     else:
-        ans2label = create_ans2label(occurence, 'train_test')
+        ans2label = create_ans2label(occurence, 'train_test', target_root)
 
     target_root = args.dataroot +'cache'
     compute_target(train_answers, ans2label, 'train', target_root)
