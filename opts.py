@@ -13,8 +13,9 @@ def parse_opt():
                     help='rnn, gru, or lstm')
     parser.add_argument('--v_dim', type=int, default=2048,
                     help='2048 for resnet, 4096 for vgg')
-    parser.add_argument('--ans_dim', type=int, default=3129,
-                    help='3219 for VQA-CP v2, 2185 for VQA-CP v1')
+    parser.add_argument('--ans_dim', type=int, default=2274,
+                    help='2274 for VQA-CP v2, 1691 for VQA-CP v1')
+#                     help='3219 for VQA v2, 2185 for VQA v1')
     parser.add_argument('--logit_layers', type=int, default=1,
                         help='number of layers in the RNN')
     parser.add_argument('--activation', type=str, default='ReLU',
