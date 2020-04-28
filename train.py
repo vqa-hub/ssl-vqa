@@ -30,7 +30,7 @@ def compute_self_loss(logits_neg, a):
     prediction_ans_k, top_ans_ind = torch.topk(F.softmax(a, dim=-1), k=1, dim=-1, sorted=False)
     neg_top_k = torch.gather(F.softmax(logits_neg,dim=-1), 1, top_ans_ind).sum(1)
 
-    qice_loss = torch.relu(neg_top_k).mean()
+    qice_loss = neg_top_k.mean()
 
     return qice_loss
 
